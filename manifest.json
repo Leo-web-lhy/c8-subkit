@@ -1,0 +1,158 @@
+{
+  "root": "C:\\.cogseed\\userWorkSpace\\我的挑战有哪些\\C8\\2023108610260_C8_subkit",
+  "generated_at": "2026-11-19T21:58:36+0800",
+  "file_count": 25,
+  "total_bytes": 83272,
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 240,
+      "sha1": "98ef0f21e4e24e3a4cec7204d29c4bdc540cfd2e",
+      "git_blob": "84aa1eee804b1dae5c5b2e1d0ecd76f11277076a"
+    },
+    {
+      "path": ".patch1.py",
+      "bytes": 1722,
+      "sha1": "affe2ea7270f16b53d7e4839ffd30656ab87006b",
+      "git_blob": "32401e584b790e88ed4af259312baebd4d592f98"
+    },
+    {
+      "path": "AAR_W.md",
+      "bytes": 8784,
+      "sha1": "35187ba7daea1a892d99d46e01d78e6702fc1aa7",
+      "git_blob": "92f614f34c45a0ca02ff102d0bb017d8982ffadb"
+    },
+    {
+      "path": "AI日志.md",
+      "bytes": 10543,
+      "sha1": "df6e4788de4c20e8e602abd9721146cdd63e4f4d",
+      "git_blob": "4588769f7c3e5e7fd841c4e98fab885576b8dad0"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1070,
+      "sha1": "aed4fb6c5feae675b07e27a11eb96e126641ce40",
+      "git_blob": "ff55416483ead59668415a2f6d30b2ca0b8159e5"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6414,
+      "sha1": "88d5e8492fb9582259b966ecfedb9d6fdb8a814b",
+      "git_blob": "06c9325a7ddb41e28be2382164151ff516868c52"
+    },
+    {
+      "path": "proposal.md",
+      "bytes": 6616,
+      "sha1": "7fa0a8b1d7f3391e046fb3e157ab4ee359f78c0e",
+      "git_blob": "d0c29d83ecfe430cf78914a0a3dbe95edcefbfb1"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 422,
+      "sha1": "43ffd1be7b96d929d5b1b541d106247853787b31",
+      "git_blob": "0780dbf0ecba59e8f732e72f533f2134d8eafcdf"
+    },
+    {
+      "path": "拿来说明.md",
+      "bytes": 5188,
+      "sha1": "b582c19bf9b90faf714e76d3f6ed93eff0de6dcb",
+      "git_blob": "8fd45ac93271a60bda294349aabe6755f81c42a4"
+    },
+    {
+      "path": "examples/README.md",
+      "bytes": 1815,
+      "sha1": "0a1cf0d0c98624c9075829e6be826b9ab386bbe6",
+      "git_blob": "a39267cf7715ca7ef2db05abc9772e764fa49960"
+    },
+    {
+      "path": "examples/broken-demo/空壳demo.md",
+      "bytes": 1,
+      "sha1": "adc83b19e793491b1c6ea0fd8b46cd9f32e592fc",
+      "git_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc"
+    },
+    {
+      "path": "examples/broken-demo/链接写在正文里.md",
+      "bytes": 640,
+      "sha1": "4c149d0e153c0aa861b9dbd2bc3ff40165c5253c",
+      "git_blob": "605f401cd03bb622f080f8fc85d86c7623aebe7b"
+    },
+    {
+      "path": "subkit/__init__.py",
+      "bytes": 162,
+      "sha1": "d5056b16ad599f05f4f6a5217024341e59c2ef6d",
+      "git_blob": "315cb57fce828c00c8e38972fea979057d18fd80"
+    },
+    {
+      "path": "subkit/__main__.py",
+      "bytes": 430,
+      "sha1": "f4582dc834a2af0cad24016b48180b999cf529cf",
+      "git_blob": "5e797468a1609433781dcf0564d9fa2c59c00467"
+    },
+    {
+      "path": "subkit/cli.py",
+      "bytes": 6473,
+      "sha1": "eb6d8439ac49c6d4c007e38bbac56005fe391376",
+      "git_blob": "5b9e010d277d300459d6a6507b2657d530671b1a"
+    },
+    {
+      "path": "subkit/deliverables.py",
+      "bytes": 4260,
+      "sha1": "17ce6eee84adfb3bb06dfacb18187d4f622ed4d9",
+      "git_blob": "9b98ede333408e191ffe156cd30330254b3036be"
+    },
+    {
+      "path": "subkit/manifest.py",
+      "bytes": 3003,
+      "sha1": "ad9f2794511e1c34908c7fb8b47018bbaa903b5e",
+      "git_blob": "46b65b24ba00355b354f24b00d0a1c52c39c5d39"
+    },
+    {
+      "path": "subkit/platform.py",
+      "bytes": 4455,
+      "sha1": "e37910f2071b7b69262ce8c9c7f5c4b20160c909",
+      "git_blob": "37d8f567d57c90f3e4dba4bc05de89e2da3ffb8a"
+    },
+    {
+      "path": "subkit/remote.py",
+      "bytes": 3452,
+      "sha1": "c0db75133ce5129136a498e3f2b981da1a50c0b6",
+      "git_blob": "1beedf822a9f14f8be01c19b08a0faedd9935390"
+    },
+    {
+      "path": "tests/__init__.py",
+      "bytes": 231,
+      "sha1": "4fcf45619ccd405ccaf5eb7378fe61ff9648b564",
+      "git_blob": "05a55571f22fea532b5df10dfa74ba92142968bb"
+    },
+    {
+      "path": "tests/test_cli.py",
+      "bytes": 4231,
+      "sha1": "646ec35344d31b86af6e5836936c979762567d9a",
+      "git_blob": "d08a4451ddb253acf85ad4db8e8795d86224b68f"
+    },
+    {
+      "path": "tests/test_deliverables.py",
+      "bytes": 3079,
+      "sha1": "202094dbaa877e4afd7128951f0c93e6c4c39c8c",
+      "git_blob": "d2bcaf6e7ff8e1cd6d994ff59429d01332183690"
+    },
+    {
+      "path": "tests/test_manifest.py",
+      "bytes": 3875,
+      "sha1": "888c63c8c948baf91aca5d5dd39558a0b43b1334",
+      "git_blob": "11cc03807a947ce3fd33f5d1038c599b225170e1"
+    },
+    {
+      "path": "tests/test_platform.py",
+      "bytes": 4106,
+      "sha1": "1e0208c4f6cf813f576c56e9b90bd468601b7eec",
+      "git_blob": "a9f7acddcb46689d628088a4203aebebb4886461"
+    },
+    {
+      "path": "tests/test_remote.py",
+      "bytes": 2060,
+      "sha1": "cab994e30ebd93d3b322722feb1790c9f0512de9",
+      "git_blob": "700623a474326fcd6686dcef22456bbb008550ef"
+    }
+  ]
+}
