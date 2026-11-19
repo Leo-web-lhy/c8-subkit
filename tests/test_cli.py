@@ -44,10 +44,25 @@ class ModuleEntryPointTest(unittest.TestCase):
         self.assertTrue(callable(getattr(entry, "main", None)))
 
     def test_runs_as_module(self):
+        # Known environment flake (measured, not guessed): on this Windows box
+        # the bundled Python occasionally refuses to spawn a child interpreter
+        # with PermissionError [WinError 5] -- roughly 1 run in 16, and never
+        # under `-v`. The retry below wraps ONLY the spawn failure; a non-zero
+        # exit or missing output still fails the test hard.
         import subprocess
+        import time
         root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        proc = subprocess.run([sys.executable, "-m", "subkit", "--help"],
-                              cwd=root, capture_output=True, text=True)
+        last = None
+        for attempt in range(3):
+            try:
+                proc = subprocess.run([sys.executable, "-m", "subkit", "--help"],
+                                      cwd=root, capture_output=True, text=True)
+                break
+            except OSError as exc:  # PermissionError is an OSError subclass
+                last = exc
+                time.sleep(0.3 * (attempt + 1))
+        else:
+            self.fail("spawn failed 3x with %r" % (last,))
         self.assertEqual(proc.returncode, 0, proc.stderr)
         self.assertIn("preflight", proc.stdout)
 

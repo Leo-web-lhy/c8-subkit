@@ -53,7 +53,7 @@
 
 **AI 改口**：不能——如果用文件 sha1 比远端，会得到"全都不一致"的相反错误。
 
-**这轮的关键产出**：把"看似简单的一个检查"拆成 5 类不同失效机理，每类需要不同判据。这一步是项目真正的设计，也是为什么后面有 56 项测试。
+**这轮的关键产出**：把"看似简单的一个检查"拆成 5 类不同失效机理，每类需要不同判据。这一步是项目真正的设计，也是为什么后面有 58 项测试。
 
 **我的一个明确要求**：`decide()` 函数永远不许返回"重新提交"。因为列表滞后导致重复提交，是我真实犯过的错。
 
@@ -147,7 +147,7 @@ AttributeError: module 'subkit.deliverables' has no attribute 'ascii_ok'
 
 **修订**：补 `__main__.py`；在 `deliverables.py` 实现 `ascii_ok`（非 ASCII 一律转 `\uXXXX`，绕开中文路径下控制台 `0xC0000005` 崩溃）；补 `tests/__init__.py`；新增 `tests/test_cli.py`（10 项契约测试），把"文档写的调用方式"变成断言：`--help` 必须返回 0、无子命令必须非 0、缺必交物必须返回 3、`manifest` 必须跳过自身产物。
 
-**结果**：`Ran 56 tests in 0.322s` / `OK` / `exit=0`；`--help` `exit=0`；`doctor` `exit=0`（`[fail] github_token missing` 是本机未设环境变量，如实报出，不隐藏）。
+**结果**：`Ran 56 tests in 0.322s` / `OK` / `exit=0`（当时的项数；提交前又补 2 项，最终 58 项，重跑实测 `Ran 58 tests ... OK`）；`--help` `exit=0`；`doctor` `exit=0`（`[fail] github_token missing` 是本机未设环境变量，如实报出，不隐藏）。
 
 **我的判断**：这三条都不是"代码写错了"，是**文档和代码从来没有在同一条路径上跑过**。这就是第六类坑——它比前五类都隐蔽：前五类会在检查时报错，这一类是"检查本身没被检查"。
 
@@ -161,6 +161,7 @@ AttributeError: module 'subkit.deliverables' has no attribute 'ascii_ok'
 - 同轮撞出第二个环境缺陷：`python -m subkit manifest .` 在本机中文工作区直接 **0xC0000005 崩溃**（进程退出码 -1073741819，零输出、无 traceback）。改为纯 ASCII 包装脚本生成清单，只打印 ASCII 统计行。
 - 两次新测试首次运行都失败：一处期望值写错（`remote_file_count` 记成 2，实际 1，因为它统计的是比较集合），一处旧断言仍要求 `from .manifest import compare` 而代码已改成 `import SKIP_FILES, compare`。**改测试不改代码**。
 - 结果：58 项 OK；重推后 `matched=24 / mismatched=0 / missing=0 / extra=0 / ignored_on_remote=1 / verdict=IDENTICAL`。
+- 随后发现**偶发红**（约 1/16）：`test_runs_as_module` 起子进程时 `PermissionError [WinError 5]`（本机嵌入式 Python 瞬时不放行）。处置：只对 spawn 的 OSError 做 3 次退避重试、断言不降级，修后连跑 30 次全绿（`OK=30 FAIL=0`）。详见 `AAR_W.md` §8。
 
 ## 2. 我给 AI 的最初指令（逐字）
 
@@ -218,7 +219,7 @@ AI 明确说：40 非空白字符是启发式，短文档会被误判。
 |---|---|
 | 总轮次 | 9 轮（取证 / 设计 / 实现 / 测试 / 环境 / 自查 / 自检 / 照文档跑一遍 / 让检查器检查自己） |
 | 真实返工 | 3 次（0 字节文件、错误断言、重定向被拒） |
-| 测试数量 | 56 项，最终 `Ran 56 tests ... OK` |
+| 测试数量 | 58 项，提交前重跑实测 `Ran 58 tests ... OK` |
 | AI 主动声明不确定 | 3 次（CI、跨平台、启发式阈值） |
 | AI 提议被我否掉 | 2 次（checklist 方案、自动重提） |
 | 交付物被 AI 自己拦下 | 3 次（`tests_run.txt` 污染；轮次 8 照文档跑命令发现 0.1.0 两个必崩缺陷；轮次 9 `verify` 把 `manifest.json` 误判为多余文件） |

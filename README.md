@@ -32,7 +32,7 @@
 ```bash
 git clone https://github.com/Leo-web-lhy/c8-subkit.git
 cd c8-subkit
-python -m unittest discover -s tests -v     # 56 项，全部应 OK
+python -m unittest discover -s tests -v     # 58 项，全部应 OK
 ```
 
 作为库使用，或直接跑 CLI：
