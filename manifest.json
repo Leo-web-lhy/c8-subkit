@@ -1,8 +1,8 @@
 {
   "root": "C:\\.cogseed\\userWorkSpace\\我的挑战有哪些\\C8\\2023108610260_C8_subkit",
-  "generated_at": "2026-11-19T22:07:20+0800",
+  "generated_at": "2026-11-19T22:09:19+0800",
   "file_count": 24,
-  "total_bytes": 83848,
+  "total_bytes": 85924,
   "files": [
     {
       "path": ".gitignore",
@@ -13,14 +13,14 @@
     {
       "path": "AAR_W.md",
       "bytes": 8784,
-      "sha1": "35187ba7daea1a892d99d46e01d78e6702fc1aa7",
-      "git_blob": "92f614f34c45a0ca02ff102d0bb017d8982ffadb"
+      "sha1": "d7792b06ffde3ae9a505f9b48e54dec0fdcb332a",
+      "git_blob": "ae68c5e1f1866a3df23c0d5ac143e5e424cce533"
     },
     {
       "path": "AI日志.md",
-      "bytes": 10543,
-      "sha1": "df6e4788de4c20e8e602abd9721146cdd63e4f4d",
-      "git_blob": "4588769f7c3e5e7fd841c4e98fab885576b8dad0"
+      "bytes": 11956,
+      "sha1": "41ed4f85117d8adbeba09f3d18ae1f95d7a13f5c",
+      "git_blob": "2a5b94e724760b8521d8a0955be013324a5ff38a"
     },
     {
       "path": "LICENSE",
@@ -31,14 +31,14 @@
     {
       "path": "README.md",
       "bytes": 6414,
-      "sha1": "88d5e8492fb9582259b966ecfedb9d6fdb8a814b",
-      "git_blob": "06c9325a7ddb41e28be2382164151ff516868c52"
+      "sha1": "571129fcef6e48b76b5ec277c258a6d88976bc76",
+      "git_blob": "afde59bc3a80a06af1754ac68993561692d674b3"
     },
     {
       "path": "proposal.md",
-      "bytes": 6616,
-      "sha1": "7fa0a8b1d7f3391e046fb3e157ab4ee359f78c0e",
-      "git_blob": "d0c29d83ecfe430cf78914a0a3dbe95edcefbfb1"
+      "bytes": 7279,
+      "sha1": "7185da0c633f3b289dfdd67acb32dec68af60e80",
+      "git_blob": "5649c54465613c2814c32a0af360363555249df4"
     },
     {
       "path": "pyproject.toml",

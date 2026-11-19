@@ -104,7 +104,7 @@ python -m subkit preflight . --required "*proposal*,*AAR_W*,*AI日志*,*拿来�
 
 ```
 subkit/            # 5 个模块：deliverables / manifest / remote / platform / cli
-tests/             # 56 项回归测试，六类故障各自有判据
+tests/             # 58 项回归测试，六类故障各自有判据
 examples/          # 一个故意做坏的交付样例，用来演示 preflight 如何拦
 README.md          # 本文件
 proposal.md        # 需求来源、验收标准、范围与非目标

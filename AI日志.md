@@ -153,6 +153,15 @@ AttributeError: module 'subkit.deliverables' has no attribute 'ascii_ok'
 
 ---
 
+### 轮次 9 — 让检查器检查自己，撞出自我指涉缺陷
+
+- 发布后跑 `python -m subkit verify --manifest manifest.json --owner ... --repo c8-subkit`，输出 `extra_on_remote=1 manifest.json`、`verdict=DIFFERS`、`exit=3`。远端 25 个 blob 与本地 24 个条目**逐字节一致**，这是工具自己制造的假阳性。
+- 原因：清单文件无法列出自己，`compare()` 把它算成多余文件。
+- 修法：`SKIP_FILES` 显式排除，`verify` 新增 `ignored_on_remote` 字段并打印（排除但不说等于静默丢弃）；新增两条测试固定行为——清单不算 extra，真正的多余文件仍必须判失败。
+- 同轮撞出第二个环境缺陷：`python -m subkit manifest .` 在本机中文工作区直接 **0xC0000005 崩溃**（进程退出码 -1073741819，零输出、无 traceback）。改为纯 ASCII 包装脚本生成清单，只打印 ASCII 统计行。
+- 两次新测试首次运行都失败：一处期望值写错（`remote_file_count` 记成 2，实际 1，因为它统计的是比较集合），一处旧断言仍要求 `from .manifest import compare` 而代码已改成 `import SKIP_FILES, compare`。**改测试不改代码**。
+- 结果：58 项 OK；重推后 `matched=24 / mismatched=0 / missing=0 / extra=0 / ignored_on_remote=1 / verdict=IDENTICAL`。
+
 ## 2. 我给 AI 的最初指令（逐字）
 
 ```
@@ -207,12 +216,12 @@ AI 明确说：40 非空白字符是启发式，短文档会被误判。
 
 | 项 | 值 |
 |---|---|
-| 总轮次 | 8 轮（取证 / 设计 / 实现 / 测试 / 环境 / 自查 / 自检 / 照文档跑一遍） |
+| 总轮次 | 9 轮（取证 / 设计 / 实现 / 测试 / 环境 / 自查 / 自检 / 照文档跑一遍 / 让检查器检查自己） |
 | 真实返工 | 3 次（0 字节文件、错误断言、重定向被拒） |
 | 测试数量 | 56 项，最终 `Ran 56 tests ... OK` |
 | AI 主动声明不确定 | 3 次（CI、跨平台、启发式阈值） |
 | AI 提议被我否掉 | 2 次（checklist 方案、自动重提） |
-| 交付物被 AI 自己拦下 | 2 次（`tests_run.txt` 污染；轮次 8 照文档跑命令时发现 0.1.0 两个必崩缺陷） |
+| 交付物被 AI 自己拦下 | 3 次（`tests_run.txt` 污染；轮次 8 照文档跑命令发现 0.1.0 两个必崩缺陷；轮次 9 `verify` 把 `manifest.json` 误判为多余文件） |
 
 ---
 
