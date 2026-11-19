@@ -1,0 +1,16 @@
+# 控制台日志：绝对不要落在交付根目录，否则会被 iter_files() 当成交付物
+tests_run.txt
+preflight.txt
+verify.txt
+doctor.txt
+
+# 生成物
+manifest.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
