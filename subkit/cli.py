@@ -97,6 +97,10 @@ def cmd_verify(args):
         emit("  MISSING_ON_REMOTE %s" % deliverables.ascii_ok(path))
     for path in result["extra_on_remote"]:
         emit("  EXTRA_ON_REMOTE %s" % deliverables.ascii_ok(path))
+    if result.get("ignored_on_remote"):
+        emit("ignored_on_remote=%d %s"
+             % (len(result["ignored_on_remote"]),
+                " ".join(deliverables.ascii_ok(p) for p in result["ignored_on_remote"])))
     emit("verdict=%s" % ("IDENTICAL" if result["ok"] else "DIFFERS"))
     return 0 if result["ok"] else 3
 

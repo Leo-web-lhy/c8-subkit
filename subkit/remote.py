@@ -74,9 +74,15 @@ def is_public(owner, repo):
 
 def verify(owner, repo, manifest, token, branch="main"):
     """Compare a local manifest with the remote tree; no downloads needed."""
-    from .manifest import compare
+    from .manifest import SKIP_FILES, compare
 
-    remote = list_blobs(owner, repo, token, branch)
+    listing = list_blobs(owner, repo, token, branch)
+    # A manifest cannot list itself (manifest.SKIP_FILES), so the manifest file
+    # sitting on the remote is not part of the comparison universe. Excluding it
+    # is correct; dropping it silently is not, because that would also hide a
+    # stale manifest that was published and then edited by hand.
+    ignored = sorted(p for p in listing if p.rsplit("/", 1)[-1] in SKIP_FILES)
+    remote = {p: s for p, s in listing.items() if p not in ignored}
     matched, mismatched, missing, extra = compare(manifest, remote)
     public_ok, note = is_public(owner, repo)
     return {
@@ -84,6 +90,7 @@ def verify(owner, repo, manifest, token, branch="main"):
         "mismatched": mismatched,
         "missing_on_remote": missing,
         "extra_on_remote": extra,
+        "ignored_on_remote": ignored,
         "public": public_ok,
         "public_note": note,
         "remote_file_count": len(remote),

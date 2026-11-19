@@ -1,8 +1,8 @@
 {
   "root": "C:\\.cogseed\\userWorkSpace\\我的挑战有哪些\\C8\\2023108610260_C8_subkit",
-  "generated_at": "2026-11-19T22:00:58+0800",
+  "generated_at": "2026-11-19T22:07:20+0800",
   "file_count": 24,
-  "total_bytes": 81550,
+  "total_bytes": 83848,
   "files": [
     {
       "path": ".gitignore",
@@ -84,9 +84,9 @@
     },
     {
       "path": "subkit/cli.py",
-      "bytes": 6473,
-      "sha1": "eb6d8439ac49c6d4c007e38bbac56005fe391376",
-      "git_blob": "5b9e010d277d300459d6a6507b2657d530671b1a"
+      "bytes": 6692,
+      "sha1": "e1e7cdd55c18477ec11796ab19701c25dbc664cf",
+      "git_blob": "5e7946ad36358054ed960346c9f817e1994f1f24"
     },
     {
       "path": "subkit/deliverables.py",
@@ -108,9 +108,9 @@
     },
     {
       "path": "subkit/remote.py",
-      "bytes": 3452,
-      "sha1": "c0db75133ce5129136a498e3f2b981da1a50c0b6",
-      "git_blob": "1beedf822a9f14f8be01c19b08a0faedd9935390"
+      "bytes": 3954,
+      "sha1": "250bfbedbb558c0b1e3daf5fed11a6c9835b2bf9",
+      "git_blob": "458846ffe243c6c8d3c30a6ce870199316f84ef8"
     },
     {
       "path": "tests/__init__.py",
@@ -144,9 +144,9 @@
     },
     {
       "path": "tests/test_remote.py",
-      "bytes": 2060,
-      "sha1": "cab994e30ebd93d3b322722feb1790c9f0512de9",
-      "git_blob": "700623a474326fcd6686dcef22456bbb008550ef"
+      "bytes": 3637,
+      "sha1": "e3bdcaa063f3262780b1ce75df17c86fddf85e57",
+      "git_blob": "15d37eb41d4e0cd0f636db975016456a4cc68f6f"
     }
   ]
 }

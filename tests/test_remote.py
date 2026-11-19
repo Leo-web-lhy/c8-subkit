@@ -53,7 +53,41 @@ class TestVerifyShape(unittest.TestCase):
     def test_compare_is_reused_not_reimplemented(self):
         import inspect
         src = inspect.getsource(rm.verify)
-        self.assertIn("from .manifest import compare", src)
+        self.assertIn("compare(manifest, remote)", src)
+        self.assertIn("from .manifest import", src)
+
+
+class TestManifestSelfExclusion(unittest.TestCase):
+    """Failure class 7: the manifest cannot list itself.
+
+    First run of `verify` against this very repo said `extra=1 manifest.json`
+    and `verdict=DIFFERS` - a false negative produced by the tool itself.
+    """
+
+    def _run(self, listing):
+        manifest = {"files": [{"path": "README.md", "git_blob": "b1"}]}
+        orig_blobs, orig_public = rm.list_blobs, rm.is_public
+        rm.list_blobs = lambda *a, **k: dict(listing)
+        rm.is_public = lambda *a, **k: (True, "https://example.invalid/repo")
+        try:
+            return rm.verify("owner", "repo", manifest, "", "main")
+        finally:
+            rm.list_blobs, rm.is_public = orig_blobs, orig_public
+
+    def test_manifest_file_is_ignored_not_extra(self):
+        res = self._run({"README.md": "b1", "manifest.json": "zzz"})
+        self.assertEqual(res["extra_on_remote"], [])
+        self.assertEqual(res["ignored_on_remote"], ["manifest.json"])
+        # remote_file_count counts the comparison universe, so the ignored
+        # manifest is not in it: 2 listed blobs - 1 ignored = 1.
+        self.assertEqual(res["remote_file_count"], 1)
+        self.assertTrue(res["ok"])
+
+    def test_a_real_extra_file_still_fails(self):
+        """The exclusion must not swallow files that genuinely do not belong."""
+        res = self._run({"README.md": "b1", "manifest.json": "zzz", "stray.txt": "c1"})
+        self.assertEqual(res["extra_on_remote"], ["stray.txt"])
+        self.assertFalse(res["ok"])
 
 
 if __name__ == "__main__":
