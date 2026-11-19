@@ -1,20 +1,14 @@
 {
   "root": "C:\\.cogseed\\userWorkSpace\\我的挑战有哪些\\C8\\2023108610260_C8_subkit",
-  "generated_at": "2026-11-19T21:58:36+0800",
-  "file_count": 25,
-  "total_bytes": 83272,
+  "generated_at": "2026-11-19T22:00:58+0800",
+  "file_count": 24,
+  "total_bytes": 81550,
   "files": [
     {
       "path": ".gitignore",
       "bytes": 240,
       "sha1": "98ef0f21e4e24e3a4cec7204d29c4bdc540cfd2e",
       "git_blob": "84aa1eee804b1dae5c5b2e1d0ecd76f11277076a"
-    },
-    {
-      "path": ".patch1.py",
-      "bytes": 1722,
-      "sha1": "affe2ea7270f16b53d7e4839ffd30656ab87006b",
-      "git_blob": "32401e584b790e88ed4af259312baebd4d592f98"
     },
     {
       "path": "AAR_W.md",
